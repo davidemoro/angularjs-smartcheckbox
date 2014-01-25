@@ -3,10 +3,12 @@
 angular.module('angularjsSmartcheckboxApp')
   .directive('smartCheckbox', [function () {
     return {
-      template: '<div></div>',
+      templateUrl: 'views/smartcheckbox.html',
       restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the smartCheckbox directive');
-      }
+      replace: true,
+      scope: {model: '='},
+      controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+        // TODO
+      }]
     };
   }]);

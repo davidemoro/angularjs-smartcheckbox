@@ -1,0 +1,16 @@
+<div>
+  Title
+  Help
+
+  select all
+  unselect all
+  toggle
+  filter by || show all
+  <div ng-repeat="elem in model">
+      <label>
+          <input class="smart" type="checkbox" value="{{elem.value || false}}" />
+          [{{elem.id}}] {{elem.label}}
+      </label>
+  </div>
+  selected list: ([id] label [x]), ([id] label [x])
+</div>

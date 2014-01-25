@@ -6,5 +6,5 @@ angular.module('angularjsSmartcheckboxApp')
     $scope.smartList = [
         {id: '001', label: 'First item'},
         {id: '002', label: 'Second item'}
-    ];
+      ];
   }]);

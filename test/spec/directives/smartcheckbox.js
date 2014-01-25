@@ -12,9 +12,13 @@ describe('Directive: smartCheckbox', function () {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<smart-checkbox></smart-checkbox>');
+  it('Two elements should appear', inject(function ($compile) {
+    scope.checkboxList = [
+      {id: '001', label:'First item'},
+      {id: '002', label:'Second item'},
+    ];
+    element = angular.element('<smart-checkbox model="checkboxList"></smart-checkbox>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the smartCheckbox directive');
+    expect(element.find('input.smart').length).toBe(2);
   }));
 });
