@@ -17,11 +17,7 @@ describe('Controller: MainCtrl', function () {
   }));
 
   it('example smart list length', function () {
-    expect(scope.smartList.length).toBe(2);
+    expect(scope.smartList.length).toBe(3);
   });
 
-  it('smart list data', function () {
-    expect(scope.smartList[0].id).toBe('001');
-    expect(scope.smartList[1].id).toBe('002');
-  });
 });

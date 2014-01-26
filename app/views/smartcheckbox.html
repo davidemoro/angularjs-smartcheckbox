@@ -1,16 +1,43 @@
-<div>
-  Title
-  Help
+<div class="smartcheckbox">
+   
 
-  select all
-  unselect all
-  toggle
-  filter by || show all
-  <div ng-repeat="elem in model">
-      <label>
-          <input class="smart" type="checkbox" value="{{elem.value || false}}" />
-          [{{elem.id}}] {{elem.label}}
-      </label>
+  <div class="input-group filtercontrols">
+    <span class="input-group-addon">Filter</span>
+    <input type="text" class="form-control" placeholder="filter by" ng-model="filter">
+    <span class="input-group-addon" ng-click="filter = ''">reset</span>
   </div>
-  selected list: ([id] label [x]), ([id] label [x])
+
+  <div class="input-group selectoptionscontrols">
+    <button type="button" class="btn btn-primary btn-sm">Select all</button>
+    <button type="button" class="btn btn-default btn-sm">Unselect all</button>
+    <button type="button" class="btn btn-default btn-sm">Toggle</button>
+  </div>
+
+  <div class="input-group ordercontrols">
+    Order options:
+    <label class="radio-inline">
+      <input type="radio" value="label" ng-model="orderby"> Label
+    </label>
+    <label class="radio-inline">
+      <input type="radio" value="id" ng-model="orderby"> Id
+    </label>
+    <label>
+      <input type="checkbox" ng-model="reverse" />
+      Reverse
+    </label>
+  </div>
+
+  <div class="checkbox widgetcontrols" ng-repeat="elem in model | filter:{$:filter} | orderBy: orderby:reverse">
+    <label>
+      <input class="smart" type="checkbox" ng-model="elem.value" value="{{elem.value || false}}" />
+      <span class="itemid">[{{elem.id}}]</span> {{elem.label}}
+    </label>
+  </div>
+
+  <div class="selectedcontrols">
+    <span class="label label-info" ng-repeat="elem in model | filter:{value: true}">
+      <span class="itemid">[{{elem.id}}]</span> {{elem.label}}
+      <span class="badge" ng-click="elem.value = false">x</span>
+    </span>
+  </div>
 </div>
