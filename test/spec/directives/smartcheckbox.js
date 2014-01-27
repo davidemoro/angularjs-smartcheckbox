@@ -14,8 +14,7 @@ describe('Directive: smartCheckbox', function () {
       {id: '001', label:'First item'},
       {id: '002', label:'Second item'},
     ];
-    element = angular.element('<smart-checkbox model="model"></smart-checkbox>');
-    element = $compile(element)($scope);
+    element = $compile('<smart-checkbox model="model"></smart-checkbox>')($scope);
     $scope.$digest();
    
     
@@ -29,7 +28,7 @@ describe('Directive: smartCheckbox', function () {
     dump(element.find('.smart'));
     dump(element.find('input'));
     dump(element.find('input.smart'));
-    expect(element.find('.smart').length).toBe('001');
+    expect(element.find('.smart').length).toBe(2);
   }));
 
 
