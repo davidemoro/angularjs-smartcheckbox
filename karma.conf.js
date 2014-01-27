@@ -9,10 +9,20 @@ module.exports = function(config) {
     // testing framework to use (jasmine/mocha/qunit/...)
     frameworks: ['jasmine'],
 
+    // generate js files from html templates
+    preprocessors: {
+      'app/views/*.html': 'ng-html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/',
+    },
+
     // list of files / patterns to load in the browser
     files: [
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
+      'app/views/*.html',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
