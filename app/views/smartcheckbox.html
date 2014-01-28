@@ -27,11 +27,13 @@
     </label>
   </div>
 
-  <div class="checkbox widgetcontrols" ng-repeat="elem in model | filter:{$:filter} | orderBy: orderby:reverse">
-    <label>
-      <input class="smart" type="checkbox" ng-model="elem.value" value="{{elem.value || false}}" />
-      <span class="itemid">[{{elem.id}}]</span> {{elem.label}}
-    </label>
+  <div>
+    <div class="checkbox widgetcontrols" ng-repeat="elem in model | filter:{$:filter} | orderBy: orderby:reverse">
+      <label>
+        <input class="smart" type="checkbox" ng-model="elem.value" value="{{elem.value || false}}" />
+        <span class="itemid">[{{elem.id}}]</span> {{elem.label}}
+      </label>
+    </div>
   </div>
 
   <div class="selectedcontrols">
