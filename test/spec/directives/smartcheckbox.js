@@ -8,6 +8,7 @@ describe('Directive: smartCheckbox', function () {
   var element,
     $rootScope,
     $compile,
+    $element,
     scope;
 
   beforeEach(inject(function (_$rootScope_, _$compile_) {
@@ -19,7 +20,8 @@ describe('Directive: smartCheckbox', function () {
         {id: '002', label:'Second item'}
     ];
 
-    element = $compile(angular.element('<smart-checkbox model="model"></smart-checkbox>'))(scope);
+    $element = angular.element('<smart-checkbox model="model"></smart-checkbox>');
+    element = $compile($element)(scope);
     $rootScope.$apply();
     
   }));
@@ -27,7 +29,7 @@ describe('Directive: smartCheckbox', function () {
 
   it('Two elements should appear', function () {
 
-    expect(element.children().eq(3).children().find('input').length).toBe(2);
+    expect($element.children().eq(3).children().find('input').length).toBe(2);
   });
 
   it('model update', function () {
@@ -38,16 +40,16 @@ describe('Directive: smartCheckbox', function () {
     scope.model = [{id:'1', label:'1'}];
     scope.$apply()
 
-    expect(element.children().eq(3).children().find('input').length).toBe(1);
+    expect($element.children().eq(3).children().find('input').length).toBe(1);
   });
 
   it('Labels order (reverse)', function () {
 
-    scope.reverse = true;
-    scope.orderby = 'label';
-    scope.$apply();
+    $element.isolateScope().reverse = true;
+    $element.isolateScope().orderby = 'label';
+    $element.isolateScope().$apply();
 
-    expect(element.children().eq(3).find('label').eq(0).find('span').text()).toBe('[002]');
+    expect($element.children().eq(3).find('label').eq(0).find('span').text()).toBe('[002]');
   });
 
 });
