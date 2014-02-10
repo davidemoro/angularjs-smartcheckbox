@@ -38,7 +38,7 @@
   <div class="selectedcontrols">
     <span class="label label-info" ng-repeat="elem in model | filter:{value: true}">
       <span class="itemid">[{{elem.id}}]</span> {{elem.label}}
-      <span class="badge" ng-click="elem.value = false">x</span>
+      <span class="badge" ng-click="unselect(elem)">x</span>
     </span>
   </div>
 </div>

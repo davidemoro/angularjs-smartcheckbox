@@ -9,6 +9,10 @@ angular.module('angularjsSmartcheckboxApp')
       scope: {model: '='},
       controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
         $scope.orderby = 'label';
+
+        $scope.unselect = function (item) {
+          item.value = false;
+        };
       }]
     };
   }]);

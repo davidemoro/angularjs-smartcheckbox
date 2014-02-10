@@ -62,4 +62,21 @@ describe('Directive: smartCheckbox', function () {
     expect($element.find('.itemid').text()).toBe('[001]');
   });
 
+  it('Select item should alter model', function () {
+
+    expect($rootScope.model[0].value).toBe(undefined);
+    $element.find('.checkboxes input').eq(0).click();
+    expect($rootScope.model[0].value).toBe(true);
+  });
+
+  it('Select item should show badge (remove on click)', function () {
+
+    expect($element.find('.selectedcontrols .itemid').length).toBe(0);
+    $element.find('.checkboxes input').eq(0).click();
+    expect($element.find('.selectedcontrols .itemid').length).toBe(1);
+    expect($rootScope.model[0].value).toBe(true);
+    expect($element.find('.selectedcontrols .badge').length).toBe(0);
+    expect($rootScope.model[0].value).toBe(false);
+  });
+
 });
