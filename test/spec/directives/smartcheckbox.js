@@ -29,7 +29,7 @@ describe('Directive: smartCheckbox', function () {
 
   it('Two elements should appear', function () {
 
-    expect($element.children().eq(3).children().find('input').length).toBe(2);
+    expect($element.find('.checkboxes input').length).toBe(2);
   });
 
   it('model update', function () {
@@ -40,16 +40,17 @@ describe('Directive: smartCheckbox', function () {
     scope.model = [{id:'1', label:'1'}];
     scope.$apply();
 
-    expect($element.children().eq(3).children().find('input').length).toBe(1);
+    expect($element.find('.checkboxes input').length).toBe(1);
   });
 
   it('Labels order (reverse)', function () {
 
-    $element.isolateScope().reverse = true;
-    $element.isolateScope().orderby = 'label';
-    $element.isolateScope().$apply();
+    var isolateScope = $element.isolateScope();
+    isolateScope.reverse = true;
+    isolateScope.orderby = 'label';
+    isolateScope.$apply();
 
-    expect($element.children().eq(3).find('label').eq(0).find('span').text()).toBe('[002]');
+    expect($element.find('.itemid').eq(0).text()).toBe('[002]');
   });
 
   it('Filter by label', function () {
@@ -58,7 +59,7 @@ describe('Directive: smartCheckbox', function () {
     isolateScope.filter = 'Firs';
     isolateScope.$apply();
 
-    expect($element.children().eq(3).find('label').eq(0).find('span').text()).toBe('[001]');
+    expect($element.find('.itemid').text()).toBe('[001]');
   });
 
 });

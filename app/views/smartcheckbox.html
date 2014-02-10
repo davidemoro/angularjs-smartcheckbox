@@ -8,18 +8,17 @@
   </div>
 
   <div class="input-group selectoptionscontrols">
-    <button type="button" class="btn btn-primary btn-sm">Select all</button>
+    <button type="button" class="btn btn-default btn-sm">Select all</button>
     <button type="button" class="btn btn-default btn-sm">Unselect all</button>
     <button type="button" class="btn btn-default btn-sm">Toggle</button>
   </div>
 
   <div class="input-group ordercontrols">
-    Order options:
     <label class="radio-inline">
-      <input type="radio" value="label" ng-model="orderby"> Label
+      <input type="radio" value="label" ng-model="orderby"> Order by label
     </label>
     <label class="radio-inline">
-      <input type="radio" value="id" ng-model="orderby"> Id
+      <input type="radio" value="id" ng-model="orderby"> Order by id
     </label>
     <label>
       <input type="checkbox" ng-model="reverse" />
@@ -27,7 +26,7 @@
     </label>
   </div>
 
-  <div>
+  <div class="checkboxes">
     <div class="checkbox widgetcontrols" ng-repeat="elem in model | filter:{$:filter} | orderBy: orderby:reverse">
       <label>
         <input class="smart" type="checkbox" ng-model="elem.value" value="{{elem.value || false}}" />

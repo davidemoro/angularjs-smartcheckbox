@@ -8,7 +8,7 @@ angular.module('angularjsSmartcheckboxApp')
       replace: true,
       scope: {model: '='},
       controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
-        // TODO
+        $scope.orderby = 'label';
       }]
     };
   }]);
