@@ -1,5 +1,6 @@
 angularjs-smartcheckbox
 =======================
+[![Build Status](https://api.travis-ci.org/davidemoro/angularjs-smartcheckbox.png)](https://travis-ci.org/davidemoro/angularjs-smartcheckbox)
 
 Reusable AngularJS checkbox list widget directive
 
