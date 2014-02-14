@@ -75,7 +75,7 @@ describe('Directive: smartCheckbox', function () {
     $element.find('.checkboxes input').eq(0).click();
     expect($element.find('.selectedcontrols .itemid').length).toBe(1);
     expect($rootScope.model[0].value).toBe(true);
-    expect($element.find('.selectedcontrols .badge').length).toBe(0);
+    $element.find('.selectedcontrols .badge').eq(0).click();
     expect($rootScope.model[0].value).toBe(false);
   });
 
