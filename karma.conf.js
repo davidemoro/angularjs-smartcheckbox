@@ -15,7 +15,7 @@ module.exports = function(config) {
     },
 
     ngHtml2JsPreprocessor: {
-      stripPrefix: 'app/',
+      stripPrefix: 'app/'
     },
 
     // list of files / patterns to load in the browser
