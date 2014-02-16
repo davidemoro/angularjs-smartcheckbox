@@ -13,6 +13,13 @@ angular.module('angularjsSmartcheckboxApp')
         $scope.unselect = function (item) {
           item.value = false;
         };
+
+        $scope.unselectAll = function () {
+        };
+        $scope.selectAll = function () {
+        };
+        $scope.toggle = function () {
+        };
       }]
     };
   }]);
