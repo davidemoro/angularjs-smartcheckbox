@@ -60,6 +60,7 @@ describe('Directive: smartCheckbox', function () {
     isolateScope.$apply();
 
     expect($element.find('.itemid').text()).toBe('[001]');
+    expect($element.find('.checkboxes input').length).toBe(1);
   });
 
   it('Select item should alter model', function () {
