@@ -53,7 +53,7 @@ describe('Directive: smartCheckbox', function () {
     expect($element.find('.itemid').eq(0).text()).toBe('[002]');
   });
 
-  it('Filter by label', function () {
+  it('Filter by', function () {
 
     var isolateScope = $element.isolateScope();
     isolateScope.filter = 'Firs';
@@ -78,6 +78,19 @@ describe('Directive: smartCheckbox', function () {
     expect($rootScope.model[0].value).toBe(true);
     $element.find('.selectedcontrols .badge').eq(0).click();
     expect($rootScope.model[0].value).toBe(false);
+  });
+
+  it('Clear filter by', function () {
+
+    var isolateScope = $element.isolateScope();
+    isolateScope.filter = 'Firs';
+    isolateScope.$apply();
+
+    expect($element.find('.itemid').text()).toBe('[001]');
+    expect($element.find('.checkboxes input').length).toBe(1);
+
+    $element.find('#reset-filter').click();
+    expect($element.find('.checkboxes input').length).toBe(2);
   });
 
 });
