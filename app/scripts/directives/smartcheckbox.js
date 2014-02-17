@@ -16,8 +16,8 @@ angular.module('angularjsSmartcheckboxApp')
 
         $scope.unselectAll = function () {
         };
-        $scope.selectAll = function (value, key) {
-            angular.forEach($scope.filtered, function (item) {
+        $scope.selectAll = function () {
+            angular.forEach($scope.filtered, function (value, key) {
               value.value = true;
           });
         };
