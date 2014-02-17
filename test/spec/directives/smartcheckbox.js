@@ -155,4 +155,42 @@ describe('Directive: smartCheckbox', function () {
     expect($rootScope.model[1].value).toBe(true);
   });
 
+  it('Toggle selection', function () {
+
+    expect($rootScope.model[0].value).toBe(undefined);
+    expect($rootScope.model[1].value).toBe(undefined);
+    $element.find('.checkboxes input').eq(0).click();
+    expect($rootScope.model[0].value).toBe(true);
+    expect($rootScope.model[1].value).toBe(undefined);
+
+    $element.find('#toggle-all').click();
+    expect($rootScope.model[0].value).toBe(false);
+    expect($rootScope.model[1].value).toBe(true);
+
+  });
+
+  it('Toggle selection (prefiltered)', function () {
+    var isolateScope = $element.isolateScope();
+
+    expect($rootScope.model[0].value).toBe(undefined);
+    expect($rootScope.model[1].value).toBe(undefined);
+    $element.find('.checkboxes input').eq(0).click();
+    expect($rootScope.model[0].value).toBe(true);
+    expect($rootScope.model[1].value).toBe(undefined);
+
+    $element.find('#toggle-all').click();
+    expect($rootScope.model[0].value).toBe(false);
+    expect($rootScope.model[1].value).toBe(true);
+
+    isolateScope.filter = 'Firs';
+    isolateScope.$apply();
+    expect($rootScope.model[0].value).toBe(false);
+    expect($rootScope.model[1].value).toBe(true);
+
+    $element.find('#toggle-all').click();
+    expect($rootScope.model[0].value).toBe(true);
+    expect($rootScope.model[1].value).toBe(true);
+
+  });
+
 });

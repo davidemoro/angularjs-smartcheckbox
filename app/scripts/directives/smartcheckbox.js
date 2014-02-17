@@ -24,7 +24,10 @@ angular.module('angularjsSmartcheckboxApp')
               value.value = true;
           });
         };
-        $scope.toggle = function () {
+        $scope.toggleAll = function () {
+            angular.forEach($scope.filtered, function (value, key) {
+              value.value = !value.value;
+          });
         };
       }]
     };
