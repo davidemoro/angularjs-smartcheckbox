@@ -119,4 +119,40 @@ describe('Directive: smartCheckbox', function () {
     expect($rootScope.model[1].value).toBe(undefined);
   });
 
+  it('Unselect all', function () {
+
+    expect($element.find('.checkboxes input').length).toBe(2);
+    expect($rootScope.model[0].value).toBe(undefined);
+    expect($rootScope.model[1].value).toBe(undefined);
+
+    $element.find('#select-all').click();
+    expect($rootScope.model[0].value).toBe(true);
+    expect($rootScope.model[1].value).toBe(true);
+
+    $element.find('#unselect-all').click();
+    expect($rootScope.model[0].value).toBe(false);
+    expect($rootScope.model[1].value).toBe(false);
+  });
+
+  it('Unselect all (pre filtered)', function () {
+    var isolateScope = $element.isolateScope();
+
+    expect($element.find('.checkboxes input').length).toBe(2);
+    expect($rootScope.model[0].value).toBe(undefined);
+    expect($rootScope.model[1].value).toBe(undefined);
+
+    $element.find('#select-all').click();
+    expect($rootScope.model[0].value).toBe(true);
+    expect($rootScope.model[1].value).toBe(true);
+
+    isolateScope.filter = 'Firs';
+    isolateScope.$apply();
+    expect($rootScope.model[0].value).toBe(true);
+    expect($rootScope.model[1].value).toBe(true);
+
+    $element.find('#unselect-all').click();
+    expect($rootScope.model[0].value).toBe(false);
+    expect($rootScope.model[1].value).toBe(true);
+  });
+
 });
