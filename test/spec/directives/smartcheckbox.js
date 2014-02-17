@@ -93,4 +93,30 @@ describe('Directive: smartCheckbox', function () {
     expect($element.find('.checkboxes input').length).toBe(2);
   });
 
+  it('Select all', function () {
+
+    expect($element.find('.checkboxes input').length).toBe(2);
+    expect($rootScope.model[0].value).toBe(undefined);
+    expect($rootScope.model[1].value).toBe(undefined);
+
+    $element.find('#select-all').click();
+    expect($rootScope.model[0].value).toBe(true);
+    expect($rootScope.model[1].value).toBe(true);
+  });
+
+  it('Select all (pre filtered)', function () {
+    var isolateScope = $element.isolateScope();
+
+    expect($element.find('.checkboxes input').length).toBe(2);
+    expect($rootScope.model[0].value).toBe(undefined);
+    expect($rootScope.model[1].value).toBe(undefined);
+
+    isolateScope.filter = 'Firs';
+    isolateScope.$apply();
+
+    $element.find('#select-all').click();
+    expect($rootScope.model[0].value).toBe(true);
+    expect($rootScope.model[1].value).toBe(undefined);
+  });
+
 });

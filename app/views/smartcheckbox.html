@@ -8,7 +8,7 @@
   </div>
 
   <div class="input-group selectoptionscontrols">
-    <button type="button" class="btn btn-default btn-sm">Select all</button>
+    <button id="select-all" type="button" class="btn btn-default btn-sm">Select all</button>
     <button type="button" class="btn btn-default btn-sm">Unselect all</button>
     <button type="button" class="btn btn-default btn-sm">Toggle</button>
   </div>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="checkboxes">
-    <div class="checkbox widgetcontrols" ng-repeat="elem in model | filter:{$:filter} | orderBy: orderby:reverse">
+    <div class="checkbox widgetcontrols" ng-repeat="elem in filtered = (model | filter:{$:filter} | orderBy: orderby:reverse)">
       <label>
         <input class="smart" type="checkbox" ng-model="elem.value" value="{{elem.value || false}}" />
         <span class="itemid">[{{elem.id}}]</span> {{elem.label}}
