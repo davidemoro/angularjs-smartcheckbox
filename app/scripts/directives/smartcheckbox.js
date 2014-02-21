@@ -7,12 +7,16 @@ angular.module('angularjsSmartcheckboxApp')
       restrict: 'E',
       replace: true,
       scope: {model: '=',
-        requiredFn: '&?'      // TODO: detect if the optional requiredFn is not an empty function
+        requiredFn: '&?'
       },
       controller: ['$scope', function ($scope) {
         // Attrs: $scope, $element, $attrs
         // TODO: Best Practice: use controller when you want to expose an API to other directives. Otherwise use link. 
         $scope.orderby = 'label';
+
+        $scope.isRequired = function () {
+          return $scope.requiredFn !== undefined && $scope.requiredFn() !== undefined;
+        };
 
         $scope.unselect = function (item) {
           item.value = false;
