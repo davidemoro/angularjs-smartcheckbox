@@ -194,3 +194,44 @@ describe('Directive: smartCheckbox', function () {
   });
 
 });
+
+
+/*
+describe('Directive: smartCheckbox requiredFn', function () {
+
+  // load the directive's module
+  beforeEach(module('angularjsSmartcheckboxApp', 'views/smartcheckbox.html'));
+
+  var element,
+    $rootScope,
+    $compile,
+    $element,
+    scope;
+
+  beforeEach(inject(function (_$rootScope_, _$compile_) {
+    $rootScope = _$rootScope_;
+    scope = $rootScope.$new();
+    $compile = _$compile_;
+    $rootScope.model = [
+        {id: '001', label:'First item'},
+        {id: '002', label:'Second item'}
+      ];
+    $rootScope.required = function () {
+        return true;
+      };
+
+    $element = angular.element('<smart-checkbox model="model" requiredfn="required"></smart-checkbox>');
+    element = $compile($element)(scope);
+    $rootScope.$apply();
+    
+  }));
+
+
+  it('Two elements should appear', function () {
+
+    expect($element.find('.checkboxes input').length).toBe(2);
+    $element.find('.checkboxes input').eq(0).click();
+  });
+
+});
+*/

@@ -7,7 +7,7 @@ angular.module('angularjsSmartcheckboxApp')
       restrict: 'E',
       replace: true,
       scope: {model: '=',
-        requiredFn: '&?'
+        requiredfn: '&?'
       },
       controller: ['$scope', function ($scope) {
         // Attrs: $scope, $element, $attrs
@@ -15,7 +15,7 @@ angular.module('angularjsSmartcheckboxApp')
         $scope.orderby = 'label';
 
         $scope.isRequired = function () {
-          return $scope.requiredFn !== undefined && $scope.requiredFn() !== undefined;
+          return $scope.requiredfn !== undefined && $scope.requiredfn() !== undefined;
         };
 
         $scope.unselect = function (item) {
