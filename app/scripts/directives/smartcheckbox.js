@@ -15,6 +15,7 @@ angular.module('angularjsSmartcheckboxApp')
         $scope.orderby = 'label';
 
         $scope.isRequired = function () {
+          // TODO: refactor checking the attrs in order to see if requiredfn is provided
           return $scope.requiredfn !== undefined && $scope.requiredfn() !== undefined;
         };
 
