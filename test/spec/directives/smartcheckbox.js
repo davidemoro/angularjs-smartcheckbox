@@ -215,8 +215,8 @@ describe('Directive: smartCheckbox requiredFn', function () {
         {id: '001', label:'First item'},
         {id: '002', label:'Second item'}
       ];
-    $rootScope.required = function () {
-        return true;
+    $rootScope.required = function (elem, selected) {
+        return selected.length > 1;
       };
 
     $element = angular.element('<smart-checkbox model="model" requiredfn="required"></smart-checkbox>');
@@ -226,10 +226,14 @@ describe('Directive: smartCheckbox requiredFn', function () {
   }));
 
 
-  it('Two elements should appear', function () {
+  it('Elements should be required', function () {
 
     expect($element.find('.checkboxes input').length).toBe(2);
+    expect($element.find('.checkboxes input').eq(0).attr('required')).toBe("required");
+    expect($element.find('.checkboxes input').eq(1).attr('required')).toBe("required");
+
     $element.find('.checkboxes input').eq(0).click();
+    // TODO: fix test
   });
 
 });

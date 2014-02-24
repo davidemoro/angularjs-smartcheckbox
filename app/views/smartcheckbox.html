@@ -29,7 +29,7 @@
   <div class="checkboxes">
     <div class="checkbox widgetcontrols" ng-repeat="elem in filtered = (model | filter:{$:filter} | orderBy: orderby:reverse)">
       <label>
-        <input ng-if="isRequired()" class="smart" type="checkbox" ng-model="elem.value" ng-required="requiredfn()" />
+        <input ng-if="isRequired()" class="smart" type="checkbox" ng-model="elem.value" ng-required="requiredfn(elem, selected)" />
         <input ng-if="!isRequired()" class="smart" type="checkbox" ng-model="elem.value" />
         <span class="itemid">[{{elem.id}}]</span> {{elem.label}}
       </label>
@@ -37,7 +37,7 @@
   </div>
 
   <div class="selectedcontrols">
-    <span class="label label-info" ng-repeat="elem in model | filter:{value: true}">
+    <span class="label label-info" ng-repeat="elem in selected = (model | filter:{value: true})">
       <span class="itemid">[{{elem.id}}]</span> {{elem.label}}
       <span class="badge" ng-click="unselect(elem)">x</span>
     </span>
