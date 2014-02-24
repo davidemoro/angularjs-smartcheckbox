@@ -9,14 +9,14 @@ angular.module('angularjsSmartcheckboxApp')
       scope: {model: '=',
         requiredfn: '&?'
       },
-      controller: ['$scope', function ($scope) {
+      controller: ['$scope', '$attrs', function ($scope, $attrs) {
         // Attrs: $scope, $element, $attrs
         // TODO: Best Practice: use controller when you want to expose an API to other directives. Otherwise use link. 
         $scope.orderby = 'label';
 
         $scope.isRequired = function () {
-          // TODO: refactor checking the attrs in order to see if requiredfn is provided
-          return $scope.requiredfn !== undefined && $scope.requiredfn() !== undefined;
+          // we cannot rely on $scope.requiredfn, see https://github.com/angular/angular.js/issues/6404#issuecomment-35818595
+          return $attrs.requiredfn;
         };
 
         $scope.unselect = function (item) {

@@ -196,7 +196,6 @@ describe('Directive: smartCheckbox', function () {
 });
 
 
-/*
 describe('Directive: smartCheckbox requiredFn', function () {
 
   // load the directive's module
@@ -234,4 +233,3 @@ describe('Directive: smartCheckbox requiredFn', function () {
   });
 
 });
-*/
