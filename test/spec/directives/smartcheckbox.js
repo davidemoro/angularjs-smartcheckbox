@@ -216,7 +216,12 @@ describe('Directive: smartCheckbox requiredFn', function () {
         {id: '002', label:'Second item'}
       ];
     $rootScope.required = function (elem, selected) {
-        return selected ? selected.length > 1 : false;
+        if (angular.isArray(selected)) {
+          return !(selected.length >= 1);
+        }
+        else {
+          return true;
+        }
       };
 
     $element = angular.element('<smart-checkbox model="model" requiredfn="required"></smart-checkbox>');
@@ -229,15 +234,14 @@ describe('Directive: smartCheckbox requiredFn', function () {
   it('Elements should be required', function () {
 
     expect($element.find('.checkboxes input').length).toBe(2);
-    expect($element.find('.checkboxes input').eq(0).attr('required')).toBe("required");
-    expect($element.find('.checkboxes input').eq(1).attr('required')).toBe("required");
+    expect($element.find('.checkboxes input').eq(0).attr('required')).toBe('required');
+    expect($element.find('.checkboxes input').eq(1).attr('required')).toBe('required');
     expect($element.find('.checkboxes input').eq(0).hasClass('ng-valid')).toBe(false);
     expect($element.find('.checkboxes input').eq(1).hasClass('ng-valid')).toBe(false);
 
     $element.find('.checkboxes input').eq(0).click();
     expect($element.find('.checkboxes input').eq(0).hasClass('ng-valid')).toBe(true);
-// TODO: test broken
-//    expect($element.find('.checkboxes input').eq(1).hasClass('ng-valid')).toBe(true);
+    expect($element.find('.checkboxes input').eq(1).hasClass('ng-valid')).toBe(true);
   });
 
 });
