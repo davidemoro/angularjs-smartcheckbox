@@ -4,3 +4,10 @@
 .selectedcontrols .badge {
     margin-left: 5px;
 }
+.smartcheckbox .input-group {
+    margin-top: 3px;
+    margin-bottom: 3px
+}
+.filtercontrols {
+    width: 60%;
+}

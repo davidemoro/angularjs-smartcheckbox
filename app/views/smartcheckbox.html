@@ -14,16 +14,24 @@
   </div>
 
   <div class="input-group ordercontrols">
-    <label class="radio-inline">
-      <input type="radio" value="label" ng-model="orderby"> Order by label
-    </label>
-    <label class="radio-inline">
-      <input type="radio" value="id" ng-model="orderby"> Order by id
-    </label>
-    <label>
-      <input type="checkbox" ng-model="reverse" />
-      Reverse
-    </label>
+    <button ng-click="orderby = 'label'"
+            type="button"
+            class="orderby-label btn btn-default btn-sm"
+            ng-class="{active: orderby === 'label'}">
+        Order by label
+    </button>
+    <button ng-click="orderby = 'id'"
+            type="button"
+            class="orderby-id btn btn-default btn-sm"
+            ng-class="{active: orderby === 'id'}">
+        Order by id
+    </button>
+    <button ng-click="reverse = !reverse"
+        type="button"
+        class="orderby-reverse btn btn-default btn-sm"
+        ng-class="{active: reverse}">
+        Reverse
+    </button>
   </div>
 
   <div class="checkboxes">
