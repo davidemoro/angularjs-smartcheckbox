@@ -3,14 +3,45 @@
 </div>
 
 <div class="row marketing">
-  <h4>Smart checkbox list</h4>
+  <h4>Usage</h4>
   <p>
     Smart checkbox list directive for:
-    {{smartList}}
-    <br />
-    <br />
-    <br />
-    <smart-checkbox model="smartList" />
+    <pre> &lt;smart-checkbox model=&quot;smartlist.mylist&quot; requiredfn=&quot;smartlist.required&quot; /&gt;</pre>
+
+    Parameters:
+    <ul>
+      <li>
+        <strong>model</strong>, array of objects with if and label attributes
+      </li>
+      <li>
+        <strong>requiredfn</strong> <em>(optional)</em>, required function with the current elem and a selected list. You can choose the required strategy of the checkbox list
+      </li>
+    </ul>
+    where <em>smartlist.mylist</em> is:
+    <pre>{{smartlist.mylist | json}}</pre>
+    with <em>smartlist.required</em>:
+    <pre>
+    $scope.smartlist.required = function (elem, selected) {
+        // elem is the current elem of the list
+        // selected is an array of selected elems
+        return angular.isArray(selected) ? selected.length === 0 : true;
+      };
+    </pre>
+  </p>
+  <h4>Demo</h4>
+  <p>
+    Select at least on item:
+    <form name="demoform">
+      <div ng-form="mylist">
+        <div class="form-group">
+          <label class="control-label">My list
+            <smart-checkbox model="smartlist.mylist" requiredfn="smartlist.required" />
+          </label>
+          <p class="help-block has-error" ng-show="demoform.mylist.$error.required">You must select at least one item</p>
+          <p class="help-block has-success" ng-show="demoform.mylist.$valid">Ok!</p>
+        </div>
+      </div>
+    </form>
   </p>
 
 </div>
