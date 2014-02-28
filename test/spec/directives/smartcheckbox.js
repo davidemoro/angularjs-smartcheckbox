@@ -245,3 +245,60 @@ describe('Directive: smartCheckbox requiredFn', function () {
   });
 
 });
+
+describe('Directive: smartCheckbox requiredFn with filter', function () {
+
+  // load the directive's module
+  beforeEach(module('angularjsSmartcheckboxApp', 'views/smartcheckbox.html'));
+
+  var element,
+    tpl = '<form name="demoform">' + 
+          '  <div ng-form="mylist">' +
+          '    <div class="form-group">' +
+          '      <label class="control-label">My list' +
+          '        <smart-checkbox model="model" requiredfn="required" />' +
+          '      </label>' +
+          '      <p class="help-block has-error" ng-show="demoform.mylist.$error.required">You must select at least one item</p>' +
+          '      <p class="help-block has-success" ng-show="demoform.mylist.$valid">Ok!</p>' +
+          '    </div>' +
+          '  </div>' +
+          '</form>',
+    $rootScope,
+    $compile,
+    $element,
+    scope;
+
+  beforeEach(inject(function (_$rootScope_, _$compile_) {
+
+    $rootScope = _$rootScope_;
+    scope = $rootScope.$new();
+    $compile = _$compile_;
+    $rootScope.model = [
+        {id: '001', label:'First item'},
+        {id: '002', label:'Second item'}
+      ];
+    $rootScope.required = function (elem, selected) {
+        return angular.isArray(selected) ? selected.length === 0 : true;
+      };
+
+    $element = angular.element(tpl);
+    element = $compile($element)(scope);
+    $rootScope.$apply();
+    
+  }));
+
+
+  it('Form should be still invalid after a filter with no results', function () {
+    var isolateScope = $element.find('.smartcheckbox').isolateScope();
+
+    expect($rootScope.model[0].value).toBe(undefined);
+    expect($rootScope.model[1].value).toBe(undefined);
+
+    expect($element.scope().demoform.$valid).toBe(false);
+    isolateScope.filter = 'Firsabzzzzzzzzzzzzzz';
+    isolateScope.$apply();
+    expect($element.scope().demoform.$valid).toBe(false);
+
+  });
+
+});
