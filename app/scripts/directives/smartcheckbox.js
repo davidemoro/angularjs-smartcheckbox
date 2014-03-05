@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularjsSmartcheckboxApp')
-  .directive('smartCheckbox', [function () {
+  .directive('smartCheckbox', ['$filter', function ($filter) {
     return {
       templateUrl: 'views/smartcheckbox.html',
       restrict: 'E',
@@ -9,9 +9,7 @@ angular.module('angularjsSmartcheckboxApp')
       scope: {model: '=',
         requiredfn: '&?'
       },
-      controller: ['$scope', '$attrs', '$filter', function ($scope, $attrs, $filter) {
-        // Attrs: $scope, $element, $attrs
-        // TODO: Best Practice: use controller when you want to expose an API to other directives. Otherwise use link. 
+      link: function ($scope, $element, $attrs) {
         $scope.orderby = 'label';
 
         $scope.isRequired = function () {
@@ -30,6 +28,7 @@ angular.module('angularjsSmartcheckboxApp')
             });
           };
         $scope.elements = function() {
+            // TODO: reimplement with watch on filter, orderby and reverse?
             var filtered, ordered;
 
             filtered = $filter('filter')($scope.model, {$: $scope.filter});
@@ -50,6 +49,6 @@ angular.module('angularjsSmartcheckboxApp')
               value.value = !value.value;
             });
           };
-      }]
+      }
     };
   }]);
