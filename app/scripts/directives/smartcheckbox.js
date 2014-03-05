@@ -27,7 +27,8 @@ angular.module('angularjsSmartcheckboxApp')
               value.value = false;
             });
           };
-        $scope.$watch("filter+orderby+reverse", function (oldvalue, newvalue) {
+        $scope.$watch('filter+orderby+reverse', function () {
+            // Attrs: oldvalue, newvalue
             var filtered, ordered;
 
             filtered = $filter('filter')($scope.model, {$: $scope.filter});
