@@ -10,8 +10,8 @@ http://blog.freeside.co/post/60074672413/unit-testing-angular-directives-that-us
 https://github.com/vojtajina/ng-directive-testing
 
 TODO:
-* bug with required and filtered list === 0, test
-* convert controller 2 link function
+* feedback when filter is not selective
+* not filter
 * github page
 * '&?'
 * release
