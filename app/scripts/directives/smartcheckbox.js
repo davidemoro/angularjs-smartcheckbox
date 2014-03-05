@@ -27,16 +27,14 @@ angular.module('angularjsSmartcheckboxApp')
               value.value = false;
             });
           };
-        $scope.elements = function() {
-            // TODO: reimplement with watch on filter, orderby and reverse?
+        $scope.$watch("filter+orderby+reverse", function (oldvalue, newvalue) {
             var filtered, ordered;
 
             filtered = $filter('filter')($scope.model, {$: $scope.filter});
             ordered = $filter('orderBy')(filtered, $scope.orderby, $scope.reverse);
 
             $scope.filtered = ordered.length ? ordered : $scope.model;
-            return $scope.filtered;
-          };
+          });
         $scope.selectAll = function () {
             angular.forEach($scope.filtered, function (value) {
               // Attrs: value, key
