@@ -106,7 +106,7 @@ describe('Directive: smartCheckbox', function () {
     expect($element.find('.itemid').text()).toBe('[001]');
     expect($element.find('.checkboxes input').length).toBe(1);
 
-    $element.find('#reset-filter').click();
+    $element.find('.reset-filter').click();
     expect($element.find('.checkboxes input').length).toBe(2);
   });
 

@@ -11,3 +11,6 @@
 .crossed {
     text-decoration: line-through;
 }
+.reset-filter {
+    cursor: pointer;
+}
