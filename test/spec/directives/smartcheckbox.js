@@ -63,6 +63,23 @@ describe('Directive: smartCheckbox', function () {
     expect($element.find('.checkboxes input').length).toBe(1);
   });
 
+  it('Filter by that does not filter, give feedback', function () {
+
+    var isolateScope = $element.isolateScope();
+    isolateScope.filter = 'Firszzzzzzzzzzzz';
+    isolateScope.$apply();
+
+    expect($element.find('.filtercontrols input').hasClass('crossed')).toBe(true);
+  });
+  it('Filter with results, no crossed style', function () {
+
+    var isolateScope = $element.isolateScope();
+    isolateScope.filter = 'Firs';
+    isolateScope.$apply();
+
+    expect($element.find('.filtercontrols input').hasClass('crossed')).toBe(false);
+  });
+
   it('Select item should alter model', function () {
 
     expect($rootScope.model[0].value).toBe(undefined);
