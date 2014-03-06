@@ -10,6 +10,7 @@ http://blog.freeside.co/post/60074672413/unit-testing-angular-directives-that-us
 https://github.com/vojtajina/ng-directive-testing
 
 TODO:
+* optimizations
 * not filter
 * github page
 * '&?'
