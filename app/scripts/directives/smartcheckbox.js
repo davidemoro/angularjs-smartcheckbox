@@ -41,6 +41,7 @@ angular.module('angularjsSmartcheckboxApp')
             });
           };
         $scope.$watch('model+filter+orderby+reverse', function () {
+            // TODO: reimplement this watch (no good watching model collection + other things)
             // Attrs: oldvalue, newvalue
             var filtered, ordered;
 
