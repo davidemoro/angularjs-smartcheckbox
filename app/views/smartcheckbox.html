@@ -3,7 +3,7 @@
 
   <div class="input-group filtercontrols">
     <span class="input-group-addon">Filter</span>
-    <input type="text" class="form-control" placeholder="filter by" ng-model="filter">
+    <input type="text" class="form-control" ng-class="{crossed: filter && model.length === filtered.length}" placeholder="filter by" ng-model="filter">
     <span id="reset-filter" class="input-group-addon" ng-click="filter = ''">reset</span>
   </div>
 
